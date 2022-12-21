@@ -1,0 +1,6 @@
+C:\Users\User\source\Projects\Semester2\miniProject\MiniProject\MiniProject.DAL\bin\Debug\MiniProject.DAL.dll
+C:\Users\User\source\Projects\Semester2\miniProject\MiniProject\MiniProject.DAL\bin\Debug\MiniProject.DAL.pdb
+C:\Users\User\source\Projects\Semester2\miniProject\MiniProject\MiniProject.DAL\obj\Debug\MiniProject.DAL.csproj.AssemblyReference.cache
+C:\Users\User\source\Projects\Semester2\miniProject\MiniProject\MiniProject.DAL\obj\Debug\MiniProject.DAL.csproj.CoreCompileInputs.cache
+C:\Users\User\source\Projects\Semester2\miniProject\MiniProject\MiniProject.DAL\obj\Debug\MiniProject.DAL.dll
+C:\Users\User\source\Projects\Semester2\miniProject\MiniProject\MiniProject.DAL\obj\Debug\MiniProject.DAL.pdb
