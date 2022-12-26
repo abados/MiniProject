@@ -11,7 +11,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniProject.Model", "MiniPr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniProject.UI.Test", "MiniProject.UI.Test\MiniProject.UI.Test.csproj", "{D93000A0-278F-405B-A3AD-92C485BB1E59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniProject.MicroServer", "MiniProject.MicroServer\MiniProject.MicroServer.csproj", "{ECE5CC64-83B4-48DB-B94D-D6F8450C1F60}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniProject.MicroService", "MiniProject.MicroServer\MiniProject.MicroService.csproj", "{ECE5CC64-83B4-48DB-B94D-D6F8450C1F60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniProject.Data.Sql", "MiniProject.Data.Sql\MiniProject.Data.Sql.csproj", "{383AAE2A-0640-4CE7-95A6-E72DDD53383C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{ECE5CC64-83B4-48DB-B94D-D6F8450C1F60}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECE5CC64-83B4-48DB-B94D-D6F8450C1F60}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ECE5CC64-83B4-48DB-B94D-D6F8450C1F60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{383AAE2A-0640-4CE7-95A6-E72DDD53383C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{383AAE2A-0640-4CE7-95A6-E72DDD53383C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{383AAE2A-0640-4CE7-95A6-E72DDD53383C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{383AAE2A-0640-4CE7-95A6-E72DDD53383C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
