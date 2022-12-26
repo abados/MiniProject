@@ -11,6 +11,7 @@ namespace MiniProject.DAL
     public class SqlQuery
     {
         //Pointer To Function
+        static string connectionString = "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Northwind;Data Source=localhost\\SQLEXPRESS";
         public delegate object SetDataReader_delegate(SqlDataReader reader);
         //Function that returns information from database and send the inforamtion to another function 
         //SqlDataReader reader contains all the information in sql database 
@@ -19,7 +20,7 @@ namespace MiniProject.DAL
         {
             object retHash = null;
             //string connectionString = ConfigurationManager.AppSettings["connectionString"];
-            string connectionString = "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Northwind;Data Source=localhost\\SQLEXPRESS";
+            
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -44,12 +45,10 @@ namespace MiniProject.DAL
          * The ExecuteNonQuery method is typically used to execute SQL statements that do not return any data, such as INSERT, UPDATE, or DELETE statements. */
 
 
-        public static void InputToDB(string SqlQuery, string FullName, int age, string HomeAddress, int StudentID)
+        public static void InputToDB(string SqlQuery)
         {
 
-            //string connectionString = ConfigurationManager.AppSettings["connectionString"];
-
-            string connectionString = "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Northwind;Data Source=localhost\\SQLEXPRESS";
+            
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -60,15 +59,27 @@ namespace MiniProject.DAL
                 // Adapter
                 using (SqlCommand command = new SqlCommand(queryString, connection))
                 {
-                    command.Parameters.AddWithValue("@FullName", FullName);
-                    command.Parameters.AddWithValue("@age", age);
-                    command.Parameters.AddWithValue("@HomeAddress", HomeAddress);
-                    command.Parameters.AddWithValue("@StudentID", StudentID);
                     command.ExecuteNonQuery();
 
                 }
             }
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         public static void DeleteFromSqlServer(string SqlQuery, int StudentID)
         {

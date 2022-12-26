@@ -19,9 +19,13 @@ namespace MiniProject.Entity
         }
 
 
-        // Instance of Students
+        // Instance of product
         // Because of it I can access to its function
         public ProductManager product = new ProductManager();
+
+        // Instance of message
+        // Because of it I can access to its function
+        public MessageManager message = new MessageManager();
 
     }
 }

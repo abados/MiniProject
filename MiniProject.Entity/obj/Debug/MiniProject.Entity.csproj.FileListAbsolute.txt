@@ -9,3 +9,5 @@ C:\Users\User\source\Projects\Semester2\miniProject\MiniProject\MiniProject.Enti
 C:\Users\User\source\Projects\Semester2\miniProject\MiniProject\MiniProject.Entity\obj\Debug\MiniProject.Entity.csproj.CopyComplete
 C:\Users\User\source\Projects\Semester2\miniProject\MiniProject\MiniProject.Entity\obj\Debug\MiniProject.Entity.dll
 C:\Users\User\source\Projects\Semester2\miniProject\MiniProject\MiniProject.Entity\obj\Debug\MiniProject.Entity.pdb
+C:\Users\User\source\Projects\Semester2\miniProject\MiniProject\MiniProject.Entity\bin\Debug\MiniProject.Data.Sql.dll
+C:\Users\User\source\Projects\Semester2\miniProject\MiniProject\MiniProject.Entity\bin\Debug\MiniProject.Data.Sql.pdb

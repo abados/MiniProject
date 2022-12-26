@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using MiniProject.Entity;
 using System.Text.Json;
+using MiniProject.Model;
 
 namespace MiniProject.MicroServer
 {
@@ -20,12 +21,19 @@ namespace MiniProject.MicroServer
             ILogger log)
         {
 
-            //string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            //dynamic data = JsonConvert.DeserializeObject(requestBody);
-            //name = name ?? data?.name;
+            if (req.Method == "GET")
+            {
+                return new OkObjectResult(System.Text.Json.JsonSerializer.Serialize(MainManager.Instance.product.getProductFromDB()));
+            }
+            else if (req.Method == "POST")
+            {
+                UserMessage data = new UserMessage();
+                data = System.Text.Json.JsonSerializer.Deserialize<UserMessage>(req.Body);
+                MainManager.Instance.message.SendNewInputToDataLayer(data);
+            }
 
-            MainManager.Instance.product.SendSqlQueryToReadFromDB("select * from Products");
-            return new OkObjectResult(System.Text.Json.JsonSerializer.Serialize(MainManager.Instance.product.ProductsList));
+
+            return null;
         }
     }
 }
