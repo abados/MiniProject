@@ -10,6 +10,8 @@ using Newtonsoft.Json;
 using MiniProject.Entity;
 using System.Text.Json;
 using MiniProject.Model;
+using MiniProject.Data.Sql;
+using System.Collections.Generic;
 
 namespace MiniProject.MicroServer
 {
@@ -17,19 +19,53 @@ namespace MiniProject.MicroServer
     {
         [FunctionName("Products")]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
-            ILogger log)
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post","delete", Route = "Users/{action}/{IdNumber?}")] HttpRequest req,
+            string action, string IdNumber, ILogger log)
         {
+            string requestBody;
 
-            if (req.Method == "GET")
+            switch (action)
             {
-                return new OkObjectResult(System.Text.Json.JsonSerializer.Serialize(MainManager.Instance.product.getProductFromDB()));
-            }
-            else if (req.Method == "POST")
-            {
-                UserMessage data = new UserMessage();
-                data = System.Text.Json.JsonSerializer.Deserialize<UserMessage>(req.Body);
-                MainManager.Instance.message.SendNewInputToDataLayer(data);
+                case "ADD":
+                    UserMessage data = new UserMessage();
+                    data = System.Text.Json.JsonSerializer.Deserialize<UserMessage>(req.Body);
+                    MainManager.Instance.message.SendNewInputToDataLayer(data);
+
+                    break;
+                case "GET":
+                            return new OkObjectResult(System.Text.Json.JsonSerializer.Serialize(MainManager.Instance.product.getProductFromDB()));
+                    break;
+
+                case "GETONE":
+                    
+                    Model.Product p = MainManager.Instance.product.getProductByIDFromDB(IdNumber);
+                    return new OkObjectResult(System.Text.Json.JsonSerializer.Serialize(p));
+
+                    break;
+                case "UpdateOne":
+                    try
+                    {
+
+                        requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+                        Model.Product product = System.Text.Json.JsonSerializer.Deserialize<Model.Product>(requestBody);
+                        MainManager.Instance.product.UpdateAProductInDb(product.productID, product.categoryID, product.unitsInStock);
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex);
+                    }
+
+                    break;
+                case "DELETE":
+
+                    MainManager.Instance.product.DeleteAProductByProductID(int.Parse(IdNumber));
+
+                    break;
+
+                default:
+                    break;
+
             }
 
 
