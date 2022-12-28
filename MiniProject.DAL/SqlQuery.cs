@@ -38,6 +38,7 @@ namespace MiniProject.DAL
                 }
             }
         }
+
         //Function that input to DB row of information about student
         //Paramater is used to set the right values
         /*ExecuteNonQuery is a method of the SqlCommand class in the .NET Framework that is used to execute a Transact-SQL statement or stored procedure against a SQL Server database. 
@@ -69,24 +70,10 @@ namespace MiniProject.DAL
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-        public static void DeleteFromSqlServer(string SqlQuery, int StudentID)
+        public static void DeleteFromSqlServer(string SqlQuery, int ProductID)
         {
 
-            //string connectionString = ConfigurationManager.AppSettings["connectionString"];
-            string connectionString = "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Northwind;Data Source=localhost\\SQLEXPRESS";
-
+        
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string queryString = SqlQuery;
@@ -96,34 +83,47 @@ namespace MiniProject.DAL
                 // Adapter
                 using (SqlCommand command = new SqlCommand(queryString, connection))
                 {
-                    command.Parameters.AddWithValue("@StudentID", StudentID);
+                    command.Parameters.AddWithValue("@productID", ProductID);
                     command.ExecuteNonQuery();
                 }
             }
         }
 
-        public static int UpdateRowById(string SqlQuery, string HomeAddress, int StudentID)
+        public static void UpdateRowById(string updateQuery, int productID, int categoryID, int unitsInStock)
         {
-            //string connectionString = ConfigurationManager.AppSettings["connectionString"];
-            string connectionString = "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Northwind;Data Source=localhost\\SQLEXPRESS";
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+
+            try
             {
-                // Open the connection
-                connection.Open();
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    // Open the connection
+                    connection.Open();
 
-                // Create a new SQL command
-                SqlCommand command = new SqlCommand(SqlQuery, connection);
+                    // Create a new SQL command
+                    using (SqlCommand command = new SqlCommand(updateQuery, connection))
+                    {
 
-                // Add the parameters for the command
-                command.Parameters.AddWithValue("@HomeAddress", HomeAddress);
-                command.Parameters.AddWithValue("@StudentID", StudentID);
+                        // Add the parameters for the command
+                        command.Parameters.AddWithValue("@productID", productID);
+                        command.Parameters.AddWithValue("@categoryID", categoryID);
+                        command.Parameters.AddWithValue("@unitsInStock", unitsInStock);
 
-                // Execute the command and get the number of rows affected
-                int rowsAffected = command.ExecuteNonQuery();
-                return rowsAffected;
+                        //Execute the command
+                        command.ExecuteNonQuery();
+                    }
+                }
             }
-
+            catch (SqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
+
+    
     }
 }
