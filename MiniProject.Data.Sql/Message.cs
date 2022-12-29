@@ -13,7 +13,7 @@ namespace MiniProject.Data.Sql
         public void SendSqlQueryToInsertToDB(UserMessage data)
         {
             string uploadMessageQuery = "insert into ContactUs values('" + data.name + "','" + data.message + "','" + data.cellPhone + "','" + data.email + "',getdate())";
-            DAL.SqlQuery.InputToDB(uploadMessageQuery);
+            DAL.SqlQuery.Insert_Update_Delete_DataInDB(uploadMessageQuery);
             
         }
        

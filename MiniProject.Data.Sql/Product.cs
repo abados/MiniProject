@@ -91,17 +91,16 @@ namespace MiniProject.Data.Sql
         {
 
 
-            string updateQuery = "update NewProductTable set CategoryID = @categoryID, UnitsInStock = @unitsInStock where ProductID = @productID";
-            DAL.SqlQuery.UpdateRowById(updateQuery, productID, categoryID, unitsInStock);
+         string updateQuery = "update NewProductTable set CategoryID="+categoryID+", UnitsInStock="+unitsInStock+ " where ProductID = "+productID + "";
+            DAL.SqlQuery.Insert_Update_Delete_DataInDB(updateQuery);
 
         }
 
         public void DeleteProduct(int productID)
         {
           
-
-            string deleteQuery = "delete from NewProductTable where ProductID = @productID ";
-            DAL.SqlQuery.DeleteFromSqlServer(deleteQuery, productID);
+            string deleteQuery = "delete from NewProductTable where ProductID ="+productID +"";
+            DAL.SqlQuery.Insert_Update_Delete_DataInDB(deleteQuery);
 
 
         }

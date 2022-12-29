@@ -47,50 +47,7 @@ namespace MiniProject.DAL
          * The ExecuteNonQuery method is typically used to execute SQL statements that do not return any data, such as INSERT, UPDATE, or DELETE statements. */
 
 
-        public static void InputToDB(string SqlQuery)
-        {
-
-            
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                string queryString = SqlQuery;
-
-                connection.Open();
-
-                // Adapter
-                using (SqlCommand command = new SqlCommand(queryString, connection))
-                {
-                    command.ExecuteNonQuery();
-
-                }
-            }
-        }
-
-
-
-
-
-        public static void DeleteFromSqlServer(string SqlQuery, int ProductID)
-        {
-
-        
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                string queryString = SqlQuery;
-
-                connection.Open();
-
-                // Adapter
-                using (SqlCommand command = new SqlCommand(queryString, connection))
-                {
-                    command.Parameters.AddWithValue("@productID", ProductID);
-                    command.ExecuteNonQuery();
-                }
-            }
-        }
-
-        public static void UpdateRowById(string updateQuery, int productID, int categoryID, int unitsInStock)
+        public static void Insert_Update_Delete_DataInDB(string updateQuery)
         {
 
 
@@ -105,10 +62,6 @@ namespace MiniProject.DAL
                     using (SqlCommand command = new SqlCommand(updateQuery, connection))
                     {
 
-                        // Add the parameters for the command
-                        command.Parameters.AddWithValue("@productID", productID);
-                        command.Parameters.AddWithValue("@categoryID", categoryID);
-                        command.Parameters.AddWithValue("@unitsInStock", unitsInStock);
 
                         //Execute the command
                         command.ExecuteNonQuery();
