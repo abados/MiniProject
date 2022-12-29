@@ -33,15 +33,16 @@ namespace MiniProject.DAL
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         retHash = Ptrfunc(reader);
-                        return retHash;
+                        
                     }
                 }
             }
+            return retHash;
         }
 
         //Function that input to DB row of information about student
         //Paramater is used to set the right values
-        /*ExecuteNonQuery is a method of the SqlCommand class in the .NET Framework that is used to execute a Transact-SQL statement or stored procedure against a SQL Server database. 
+        /*ExecuteNonQuery is a method of the SqlCommand class in the .NET Framework that is used to execute a Transact-SQL statement or stored procedure against a SQL Server database...
          * The ExecuteNonQuery method returns an integer value that indicates the number of rows affected by the SQL statement or stored procedure.
          * The ExecuteNonQuery method is typically used to execute SQL statements that do not return any data, such as INSERT, UPDATE, or DELETE statements. */
 
